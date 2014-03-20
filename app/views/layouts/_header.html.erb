@@ -3,15 +3,20 @@
       <a class="navbar-brand" href="#">Meesterproef</a>
       <nav>
       	<ul class="nav navbar-nav">
-          <li><%= link_to "Home",    '#' %></li>
-          <li><%= link_to "Help",    '#' %></li>
-          <li><%= link_to "Sign in", '#' %></li>
+          <li><%= link_to "Timecard",    '#' %></li>
+          <li><%= link_to "Projects",    '#' %></li>
+          <li><%= link_to "Manage users", '#' %></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Home",    '#' %></li>
-          <li><%= link_to "Help",    '#' %></li>
-          <li><%= link_to "Sign in", '#' %></li>
-        </ul>
+        <div class="nav navbar-text navbar-right">
+      		<% if user_signed_in? %>
+			  Logged in as <strong><%= current_user.email %></strong>.
+			  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+			  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+			<% else %>
+			  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+			  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+			<% end %>
+        </div>
       </nav>
     </div>
 </header>

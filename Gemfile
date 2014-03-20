@@ -47,7 +47,8 @@ end
 
 
 
-#all bootstrap and gems necessary for layout
  ## add to application.html (GLYPHICONS): 
  ## <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 gem 'bootstrap-sass','3.1.1.0'
+
+gem 'devise'

@@ -28,9 +28,15 @@ footer ul li {
 
 /* Tables */
 td.last {
-  width: 20%;
+  float:right;
+  width:210px;
 }
-
+td {
+  border-top:none !important;
+}
+tbody tr {
+  border-top:1px solid #ddd;
+}
 
 /* Buttons */
 .btn-default a, .btn-default a:visited {
