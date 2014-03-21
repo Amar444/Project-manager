@@ -1,5 +1,7 @@
 /* Universal */
-
+body {
+  overflow: hidden;
+}
 
 /* Footer */
 footer {
@@ -45,6 +47,24 @@ tbody tr {
 .btn a, .btn a:visited {
   color: #fff;
   text-decoration: none;
+}
+
+/* Login layout */
+.loginstyle {
+  margin-bottom: 10px;
+}
+.loginfields input.form-control {
+  width:220px !important;
+}
+.loginfields .input-group-addon {
+  width: 100px;
+  text-align: left;
+}
+.newpassword {
+  display: none;
+}
+i.imessage {
+  font-size:12px;
 }
 
 
