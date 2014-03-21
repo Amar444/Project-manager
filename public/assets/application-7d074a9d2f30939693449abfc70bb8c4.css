@@ -1,0 +1,111 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+/* Universal */
+/* line 3, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+body {
+  overflow: hidden;
+}
+
+/* Footer */
+/* line 8, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+}
+
+/* line 14, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+footer a {
+  color: #555;
+}
+
+/* line 17, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+footer a:hover {
+  color: #222;
+}
+
+/* line 20, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+footer small {
+  float: left;
+}
+
+/* line 23, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+/* line 27, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}
+
+/* Tables */
+/* line 33, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+td.last {
+  float: right;
+  width: 210px;
+}
+
+/* line 37, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+td {
+  border-top: none !important;
+}
+
+/* line 40, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+tbody tr {
+  border-top: 1px solid #ddd;
+}
+
+/* Buttons */
+/* line 45, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+.btn-default a, .btn-default a:visited {
+  color: #333 !important;
+}
+
+/* line 48, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+.btn a, .btn a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Login layout */
+/* line 54, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+.loginstyle {
+  margin-bottom: 10px;
+}
+
+/* line 57, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+.loginfields input.form-control {
+  width: 220px !important;
+}
+
+/* line 60, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+.loginfields .input-group-addon {
+  width: 100px;
+  text-align: left;
+}
+
+/* line 64, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+.newpassword {
+  display: none;
+}
+
+/* line 67, /Users/amar/Eclipse/meesterproefconcept/app/assets/stylesheets/custom.css.scss */
+i.imessage {
+  font-size: 12px;
+}
