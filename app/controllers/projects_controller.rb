@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
   # GET /projects
   # GET /projects.json
   def index
@@ -15,6 +14,11 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /projects/1/edit
@@ -54,21 +58,26 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url }
-      format.json { head :no_content }
-    end
+    #if current_user.admin?
+      @project.destroy
+      respond_to do |format|
+        format.html { redirect_to projects_url }
+        format.json { head :no_content }
+      end
+   # else
+    #  flash.now[:notice] = "test"
+   # end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.require(:project).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def project_params
+    params.require(:project).permit(:name, :description)
+  end
 end

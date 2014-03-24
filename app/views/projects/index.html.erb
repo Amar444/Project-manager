@@ -33,12 +33,14 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+
+<%= link_to 'New Project', new_project_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
 
 
 
-
-<h2>All users:</h2>
+<h2>All users: (Moet naar /Manage-users verhuizen!)</h2>
 <div class="table-responsive">
 	<table class="table table-striped">
 	  <thead>
