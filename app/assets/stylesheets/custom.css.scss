@@ -3,6 +3,11 @@ body {
   overflow: hidden;
 }
 
+/* Header */
+.loginas {
+  line-height: 34px;
+}
+
 /* Footer */
 footer {
   margin-top: 45px;
@@ -30,7 +35,7 @@ footer ul li {
 
 /* Tables */
 td.last {
-  width:210px;
+  width:215px;
 }
 td {
   border-top:none !important;
