@@ -1,6 +1,10 @@
 Meesterproefconcept::Application.routes.draw do
   devise_for :users
   resources :projects
+  resources :employee
+  
+  get 'manage-users' => 'employee#index'
+
   
   root to: "projects#index"
 

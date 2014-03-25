@@ -1,0 +1,38 @@
+<% if current_user.admin? %>
+
+<h2>All users:</h2>
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Role</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<% @user.each do |user| %>
+			<tr>
+				<td><%= user.full_name %></td>
+				<td><%= user.email %></td>
+				<td> <% if user.admin? %> <span style="color:red;"> ADMIN </span> <% else %>
+				User
+				<% end %>
+				<br />
+				</td>
+				<td class="last"> 
+				<%= link_to 'Delete', '#', data: { confirm: 'Are you sure?' },  class: "btn btn-danger"  %>
+				<%= link_to 'Edit', '#', {:class => "btn btn-info"}  %> 
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+<% else %>
+You don't have sufficient permissions to view this data
+<% end %>
