@@ -1,9 +1,11 @@
-<h1>Listing projects</h1>
+<h1>Projects</h1>
 
+<%= link_to 'New Project', new_project_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-primary", :style => "float:left; margin-right:5px;"}  %>
 <select class="form-control" style="width:initial; font-weight: bold;">
 	<option>Participated Projects</option>
 	<option>All projects</option>
 </select>
+
 
 <div class="table-responsive">
 	<table class="table table-striped">
@@ -21,9 +23,9 @@
 	        <td><%= project.name %></td>
 	        <td><%= project.description %></td>
 	        <td class="last">
-	        	<btn type="button" class="btn btn-default"><%= link_to 'Show', project %></btn>
-	        	<btn type="button" class="btn btn-info"><%= link_to 'Edit', edit_project_path(project) %></btn>
-	        	<btn type="button" class="btn btn-danger"><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></btn>
+	        	<%= link_to 'Show', project, { class:"btn btn-default" } %>
+	        	<%= link_to 'Edit', edit_project_path(project), { class:"btn btn-info" } %>
+	        	<%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger"  %>
 	        </td>
 	      </tr>
 	    <% end %>
@@ -31,12 +33,7 @@
 	</table>
 </div>
 
-<br>
-
-<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-
-
-<%= link_to 'New Project', new_project_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  %>
+<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 
 
