@@ -3,7 +3,7 @@ Meesterproefconcept::Application.routes.draw do
   resources :projects
   resources :employee
   
-  get 'manage-users' => 'employee#index'
+  #get 'manage-users' => 'employee#index'
 
   
   root to: "projects#index"

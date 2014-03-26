@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   
   # Allow following parameters to be written when creating or updating an account. ( Added :full_name )
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :configure_permitted_parameters, if: :devise_controller? 
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:full_name, :email, :password, :password_confirmation, :remember_me) }

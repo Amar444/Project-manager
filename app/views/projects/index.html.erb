@@ -1,38 +1,48 @@
 <h1>Projects</h1>
 
-<%= link_to 'New Project', new_project_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-primary", :style => "float:left; margin-right:5px;"}  %>
-<select class="form-control" style="width:initial; font-weight: bold;">
-	<option>Participated Projects</option>
-	<option>All projects</option>
-</select>
+<%= link_to 'New Project', new_project_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-primary"}  %>
 
 
-<div class="table-responsive">
-	<table class="table table-striped">
-	  <thead>
-	    <tr>
-	      <th>Name</th>
-	      <th>Description</th>
-	      <th></th>
-	    </tr>
-	  </thead>
-	
-	  <tbody>
-	    <% @projects.each do |project| %>
-	      <tr>
-	        <td><%= project.name %></td>
-	        <td><%= project.description %></td>
-	        <td class="last">
-	        	<%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger"  %>
-	        	<%= link_to 'Edit', edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"}  %>
-	        </td>
-	      </tr>
-	    <% end %>
-	  </tbody>
-	</table>
+<ul class="nav nav-tabs" style="margin:10px 0;">
+	<li class="active">
+		<a href="#yourPr" data-toggle="tab">Participated Projects</a>
+	</li>
+	<li>
+		<a href="#allPr" data-toggle="tab">All Projects</a>
+	</li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="yourPr">
+		<p>Your participated projects will come here. (moet nog gemaakt worden..)</p>
+	</div>
+	<div class="tab-pane" id="allPr">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @projects.each do |project| %>
+					<tr>
+						<td><%= project.name %></td>
+						<td><%= project.description %></td>
+						<td class="last"> <% if current_user.admin? %>
+						<%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger"  %>
+						<% end %>
+						<%= link_to 'Edit', edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"}  %> </td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
 
 <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-
-
 

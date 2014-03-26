@@ -24,14 +24,18 @@
 				<br />
 				</td>
 				<td class="last"> 
-				<%= link_to 'Delete', '#', data: { confirm: 'Are you sure?' },  class: "btn btn-danger"  %>
-				<%= link_to 'Edit', '#', {:class => "btn btn-info"}  %> 
+				<%= link_to 'Delete', '#', data: { confirm: 'Are you sure? Doesnt work yet :P' },  class: "btn btn-danger"  %>
+				<%= link_to 'Edit', edit_employee_path(user)#, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} 
+				 %> 
+				</td> 
 				</td>
 			</tr>
 			<% end %>
 		</tbody>
 	</table>
 </div>
+
+<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 <% else %>
 You don't have sufficient permissions to view this data

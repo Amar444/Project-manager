@@ -3,8 +3,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
-    
+    @projects = Project.all  
   end
 
   # GET /projects/new
@@ -54,15 +53,18 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    #if current_user.admin?
+    if current_user.admin?
       @project.destroy
       respond_to do |format|
         format.html { redirect_to (:back), notice: 'Project has been deleted.' }
         format.json { head :no_content }
       end
-   # else
-    #  flash.now[:notice] = "test"
-   # end
+    else
+      respond_to do |format|
+        format.html { redirect_to (:back), alert: 'You don\'t have sufficient permissions to do this' }
+        format.json { head :no_content }
+      end
+    end
   end
 
   private
