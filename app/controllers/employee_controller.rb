@@ -45,7 +45,7 @@ class EmployeeController < ApplicationController
   def check_if_admin
     if current_user.admin?
     else
-      redirect_to root_path,  :flash => { :error => 'Only admins allowed!' }
+      redirect_to root_path, alert: 'Only admins allowed!' 
     end
   end
 
