@@ -1,4 +1,5 @@
 class EmployeeController < ApplicationController
+  before_filter :check_if_admin
   def index
     @user = User.all
   end
@@ -36,7 +37,16 @@ class EmployeeController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email,:full_name)
+  end
+
+  protected
+
+  def check_if_admin
+    if current_user.admin?
+    else
+      redirect_to root_path,  :flash => { :error => 'Only admins allowed!' }
+    end
   end
 
 end
