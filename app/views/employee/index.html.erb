@@ -17,7 +17,9 @@
 			<tr>
 				<td><%= user.full_name %></td>
 				<td><%= user.email %></td>
-				<td> <% if user.admin? %> <span style="color:red;"> ADMIN </span> <% else %>
+				<td> <% if user.role = "admin" %> <span style="color:red;"> ADMIN </span> <% elsif user.role = "moderator"%>
+					<span style="color:red;"> MODERATOR </span>
+					<% else %>
 				User
 				<% end %>
 				<br />

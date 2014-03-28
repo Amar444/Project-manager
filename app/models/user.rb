@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   private
   def set_role
     if User.count == 1
-      User.first.update_attribute(:admin, true)
+      User.first.update_attribute(:role, "admin")
     else
       return true
     end   

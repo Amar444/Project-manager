@@ -13,22 +13,27 @@
 			<div class="field">
 				<%= f.label :full_name %>
 				<br>
-				<%= f.text_field :full_name, class: "form-control", :style => "width:40%;", :placeholder => "Full name" %>
+				<%= f.text_field :full_name, class: "form-control input-width", :placeholder => "Full name" %>
 			</div>
 			<div class="field">
 				<%= f.label :email %>
 				<br>
-				<%= f.email_field :email, class: "form-control", :style => "width:40%;", :placeholder => "Email" %>
+				<%= f.email_field :email, class: "form-control input-width", :placeholder => "Email" %>
 			</div>
 			<div class="field">
 				<%= f.label :password %>
 				<br>
-				<%= f.password_field :password, class: "form-control", :style => "width:40%;", :placeholder => "Password" %>
+				<%= f.password_field :password, autocomplete: "off",  class: "form-control input-width", :placeholder => "Password" %>
 			</div>
 			<div class="field">
 				<%= f.label :password %>
 				<br>
-				<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", :style => "width:40%;", placeholder: "Confirm Password" %>
+				<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-width", :placeholder => "Confirm Password" %>
+			</div>
+			<div class="field">
+				<%= f.label "Make admin?" %>
+				<br>
+
 			</div>
 			
 			 

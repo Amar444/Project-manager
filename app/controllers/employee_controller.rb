@@ -1,5 +1,5 @@
 class EmployeeController < ApplicationController
-  before_filter :check_if_admin
+  before_filter :check_role
   def index
     @user = User.all
   end
@@ -37,19 +37,19 @@ class EmployeeController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email,:full_name)
+    params.require(:user).permit(:email,:full_name, :role)
   end
   def new_user_params
-    params.require(:user).permit(:email,:full_name, :password)
+    params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role)
   end
 
 
   protected
 
-  def check_if_admin
-    if current_user.admin?
+  def check_role
+    if current_user.role = "moderator" || current_user.role = "admin"
     else
-      redirect_to root_path, alert: 'Only admins allowed!' 
+      redirect_to root_path, alert: 'You don\'t have sufficient permissions to access this page.' 
     end
   end
 

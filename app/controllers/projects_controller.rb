@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    if current_user.admin?
+    if current_user.role = "admin" || current_user.role = "administrator"
       @project.destroy
       respond_to do |format|
         format.html { redirect_to (:back), notice: 'Project has been deleted.' }
