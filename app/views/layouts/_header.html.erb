@@ -10,7 +10,7 @@
 				<li>
 					<%= link_to "Projects",    '/projects' %>
 				</li>
-				<% if current_user.role = "admin" || current_user.role = "moderator" %>
+				<% if current_user.role == "admin" || current_user.role == "moderator" %>
 				<li>
 					<%= link_to "Manage users", '/employee' %>
 				</li>
@@ -37,9 +37,9 @@
 			</div>
 			
 			<div class="nav navbar-text navbar-right">
-				<% if current_user.role = "admin" %>
+				<% if current_user.role == "admin" %>
 				<span style="color:red;"> ADMIN </span>
-				<% elsif current_user.role = "moderator" %>
+				<% elsif current_user.role == "moderator" %>
 				<span style="color:red;"> MODERATOR </span>
 				<% end %>
 			</div>

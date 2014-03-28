@@ -1,4 +1,4 @@
-<h2>All users:</h2> 
+<h2>All users:</h2>
 <%= link_to 'New user', new_employee_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} %>
 <div class="table-responsive">
 	<table class="table table-striped">
@@ -17,18 +17,14 @@
 			<tr>
 				<td><%= user.full_name %></td>
 				<td><%= user.email %></td>
-				<td> <% if user.role = "admin" %> <span style="color:red;"> ADMIN </span> <% elsif user.role = "moderator"%>
-					<span style="color:red;"> MODERATOR </span>
-					<% else %>
+				<td> <% if user.role == "admin" %> <span style="color:red;"> ADMIN </span> <% elsif user.role == "moderator"%> <span style="color:red;"> MODERATOR </span> <% else %>
 				User
 				<% end %>
 				<br />
 				</td>
-				<td class="last"> 
-				<%= link_to 'Delete', '#', data: { confirm: 'Are you sure? Doesnt work yet :P' },  class: "btn btn-danger"  %>
-				<%= link_to 'Edit', edit_employee_path(user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} 
-				 %> 
-				</td> 
+				<td class="last"> <%= link_to 'Delete', '#', data: { confirm: 'Are you sure? Doesnt work yet :P' },  class: "btn btn-danger"  %>
+				<%= link_to 'Edit', edit_employee_path(user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"}
+%> </td>
 				</td>
 			</tr>
 			<% end %>

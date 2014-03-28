@@ -47,7 +47,7 @@ class EmployeeController < ApplicationController
   protected
 
   def check_role
-    if current_user.role = "moderator" || current_user.role = "admin"
+    if current_user.role == "moderator" || current_user.role == "admin"
     else
       redirect_to root_path, alert: 'You don\'t have sufficient permissions to access this page.' 
     end
