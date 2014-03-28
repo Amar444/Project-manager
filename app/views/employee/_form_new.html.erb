@@ -28,12 +28,12 @@
 			<div class="field">
 				<%= f.label :password %>
 				<br>
-				<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-width", :placeholder => "Confirm Password" %>
+				<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-width", :placeholder => "Confirm password" %>
 			</div>
 			<div class="field">
-				<%= f.label "Make admin?" %>
+				<%= f.label "Role" %>
 				<br>
-
+				<%= f.select :role, options_for_select([ ["User","user"],["Moderator","moderator"] ]),{}, {:class => "form-control combo-width"} %>
 			</div>
 			
 			 

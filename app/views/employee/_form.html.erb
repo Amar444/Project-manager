@@ -20,6 +20,14 @@
 				<br>
 				<%= f.email_field :email, class: "form-control input-width", :placeholder => "Email" %>
 			</div>
+			<% if User.find(params[:id]).role == "admin" %>
+			<% else %>
+			<div class="field">
+				<%= f.label "Role" %>
+				<br>
+				<%= f.select :role, options_for_select([ ["User","user"],["Moderator","moderator"] ], :selected => @user.role),{}, {:class => "form-control combo-width"} %>
+			</div>
+			<% end %>
 
 		</div>
 		<div class="modal-footer">

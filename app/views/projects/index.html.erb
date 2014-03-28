@@ -32,7 +32,7 @@
 					<tr>
 						<td><%= project.name %></td>
 						<td><%= project.description %></td>
-						<td class="last"> <% if current_user.admin? %>
+						<td class="last"> <% if current_user.role == "admin" || current_user.role == "moderator" %>
 						<%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger"  %>
 						<% end %>
 						<%= link_to 'Edit', edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"}  %> </td>
