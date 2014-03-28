@@ -13,11 +13,11 @@ class EmployeeController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(new_user_params)
     if @user.save
-      redirect_to @user, :notice => 'User is succesfully created'
+      redirect_to (:back), :notice => 'User is succesfully created'
     else
-      render :new
+      render :new, alert: 'something went wrong!'
     end
   end
 
@@ -29,7 +29,7 @@ class EmployeeController < ApplicationController
         format.html { redirect_to (:back), notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit', notice: 'Something went wrong' }
+        format.html { render action: 'edit', alert: 'Something went wrong' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
 
@@ -39,6 +39,10 @@ class EmployeeController < ApplicationController
   def user_params
     params.require(:user).permit(:email,:full_name)
   end
+  def new_user_params
+    params.require(:user).permit(:email,:full_name, :password)
+  end
+
 
   protected
 
