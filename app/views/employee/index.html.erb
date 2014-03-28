@@ -23,7 +23,7 @@
 				<br />
 				</td>
 				<td class="last"> 
-				<% if user.role != "" %>
+				<% if user.role != "admin" %>
 				<%= link_to 'Delete', employee_path(user), method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger"  %>
 				<%= link_to 'Edit', edit_employee_path(user), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} %> </td>
 				<% end %>
