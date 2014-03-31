@@ -25,21 +25,15 @@
 			<% end %>
 
 			<div class="field">
-				<%= f.label :full_name %>
-				<br>
-				<%= f.text_field :full_name, class: "form-control input-width", :placeholder => "Full name" %>
+				<%= f.input :full_name, :input_html => { class: "form-control input-width", :placeholder => "Full name" } %>
 			</div>
 			<div class="field">
-				<%= f.label :email %>
-				<br>
-				<%= f.email_field :email, class: "form-control input-width", :placeholder => "Email" %>
+				<%= f.input :email, :input_html => { class: "form-control input-width", :placeholder => "Email" } %>
 			</div>
 			<% if User.find(params[:id]).role == "admin" || User.find(params[:id]) == current_user %>
 			<% else %>
 			<div class="field">
-				<%= f.label "Role" %>
-				<br>
-				<%= f.select :role, options_for_select([ ["User","user"],["Moderator","moderator"] ], :selected => @user.role),{}, {:class => "form-control combo-width"} %>
+				<%= f.input :role, :collection => user_ranks, include_blank: false, :input_html => { :class => "form-control combo-width" } %> 
 			</div>
 			<% end %>
 

@@ -1,27 +1,27 @@
 <h2>Register</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+ 
 
   <div class="loginfields">
 	  <div class="input-group loginstyle">
 	  	<span class="input-group-addon">Full name</span>
-	  	<%= f.text_field :full_name, autofocus: true, class: "form-control", placeholder: "Full name" %>
+	  	<%= f.input :full_name, :label => false, autofocus: true, :input_html => { class: "form-control", placeholder: "Full name" } %>
 	  </div>
 	
 	  <div class="input-group loginstyle">
 	  	<span class="input-group-addon">Email</span>
-	  	<%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+	  	<%= f.input :email, :label => false, :input_html => { class: "form-control", placeholder: "Email" } %>
 	  </div>
 	
 	  <div class="input-group loginstyle">
 	  	<span class="input-group-addon">Password</span>
-	    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+	    <%= f.input :password, :label => false, autocomplete: "off", :input_html => { class: "form-control", placeholder: "Password" } %>
 	  </div>
 	
 	  <div class="input-group loginstyle">
 	  	<span class="input-group-addon">Password *</span>
-	    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Confirm Password" %>
+	    <%= f.input :password_confirmation, :label => false, autocomplete: "off",:input_html => {  class: "form-control", placeholder: "Confirm Password" } %>
 	  </div>
 	
 	  <div><%= f.submit "Register", class: "btn btn-primary" %></div>

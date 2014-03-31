@@ -25,14 +25,10 @@
 
 			
 			<div class="field">
-				<%= f.label :name %>
-				<br>
-				<%= f.text_field :name, class: "form-control", :style => "width:40%;", :placeholder => "Project name" %>
+				<%= f.input :name, :input_html => { class: "form-control", :style => "width:40%;", :placeholder => "Project name" } %>
 			</div>
 			<div class="field">
-				<%= f.label :description %>
-				<br>
-				<%= f.text_area :description, class: "form-control", :placeholder => "Project description" %>
+				<%= f.input :description, as: :text, :input_html => { class: "form-control", :placeholder => "Project description" } %>
 			</div>
 
 		</div>

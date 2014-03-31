@@ -5,12 +5,12 @@
   <div class="loginfields">
 	  <div class="input-group loginstyle">
 	  	<span class="input-group-addon">Email</span>
-	  	<%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
+	  	<%= f.input :email, :label => false, autofocus: true, placeholder: "Email",:input_html => { class: "form-control" } %>
 	  </div> 
 	
 	  <div class="input-group loginstyle">
 	  	<span class="input-group-addon">Password</span>
-	  	<%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
+	  	<%= f.input :password, :label => false, autocomplete: "off", placeholder: "Password", :input_html => { class: "form-control" } %>
 	  </div>
 	
 	  <% if devise_mapping.rememberable? -%>
