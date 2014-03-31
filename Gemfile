@@ -53,3 +53,4 @@ end
 gem 'bootstrap-sass','3.1.1.0'
 
 gem 'devise'
+gem 'simple_form'

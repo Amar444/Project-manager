@@ -7,7 +7,7 @@
 			</button>
 			<h4 class="modal-title" id="myModalLabel">Edit user</h4>
 		</div>
-		<%= form_for @user, :url => {:action => "update", :controller => "employee" } do |f| %>
+		<%= simple_form_for @user, :url => {:action => "update", :controller => "employee" } do |f| %>
 		<div class="modal-body">
 			
 			<% if @user.errors.any? %>

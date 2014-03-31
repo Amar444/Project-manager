@@ -7,7 +7,7 @@
 			</button>
 			<h4 class="modal-title" id="myModalLabel">Add new user</h4>
 		</div>
-		<%= form_for @user, :url => {:action => "create", :controller => "employee" } do |f| %>
+		<%= simple_form_for @user, :url => {:action => "create", :controller => "employee" } do |f| %>
 		<div class="modal-body">
 			
 			<% if @user.errors.any? %>
@@ -40,7 +40,7 @@
 				<%= f.password_field :password, autocomplete: "off",  class: "form-control input-width", :placeholder => "Password" %>
 			</div>
 			<div class="field">
-				<%= f.label :password %>
+				<%= f.label :password_confirmation %>
 				<br>
 				<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control input-width", :placeholder => "Confirm password" %>
 			</div>
