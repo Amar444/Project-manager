@@ -35,7 +35,7 @@
 					</ul>
 				</div>
 			</div>
-			
+
 			<div class="nav navbar-text navbar-right">
 				<% if current_user.role == "admin" %>
 				<span style="color:red;"> ADMIN </span>
@@ -43,7 +43,7 @@
 				<span style="color:red;"> MODERATOR </span>
 				<% end %>
 			</div>
-			
+
 			<% else %>
 			<div class="nav navbar-text navbar-right">
 				<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
