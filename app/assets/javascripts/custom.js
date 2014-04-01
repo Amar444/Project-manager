@@ -4,7 +4,7 @@ $(function() {
 	$('.newpasswordopen').on('click',function(){
 		$('.newpassword').slideToggle();
 	});
-	
+
 	
 
 	
