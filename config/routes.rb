@@ -1,12 +1,17 @@
 Meesterproefconcept::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   resources :projects
   resources :employee
-  
-  #get 'manage-users' => 'employee#index'
 
-  
-  root to: "projects#index"
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'projects#index'
+    end
+    unauthenticated :user do
+      root :to => 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
