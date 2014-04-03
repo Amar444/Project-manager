@@ -14,7 +14,30 @@
 
 <div class="tab-content">
 	<div class="tab-pane active" id="yourPr">
-		<p>Your participated projects will come here. (moet nog gemaakt worden..)</p>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @userprojects.each do |project| %>
+					<tr>
+						<td><%= project.name %></td>
+						<td><%= project.description %></td>
+						<td class="last"> <% if current_user.role == "admin" || current_user.role == "moderator" %>
+						<%= link_to 'Delete', project, method: :delete, data: { confirm: "Are you sure you want to delete #{project.name}?" },  class: "btn btn-danger"  %>
+						<% end %>
+						<%= link_to 'Edit', edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"}  %> </td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<div class="tab-pane" id="allPr">
 		<div class="table-responsive">

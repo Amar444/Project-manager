@@ -7,7 +7,7 @@ Meesterproefconcept::Application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root :to => 'projects#index'
+      root :to => 'workhours#index'
     end
     unauthenticated :user do
       root :to => 'devise/sessions#new', as: :unauthenticated_root
