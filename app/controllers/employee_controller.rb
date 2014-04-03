@@ -28,7 +28,7 @@ class EmployeeController < ApplicationController
 
     if @user.update(user_params)
       respond_to do |format|
-        format.html { redirect_to (:back), notice: 'User was successfully updated.' }
+        format.html { redirect_to (:back), notice: "#{@user.full_name} was successfully updated." }
         format.json { head :no_content }
       end
     else
@@ -45,7 +45,7 @@ class EmployeeController < ApplicationController
     if @user.role != "admin"
       @user.destroy
       respond_to do |format|
-        format.html { redirect_to (:back), notice: 'User has been deleted.' }
+        format.html { redirect_to (:back), notice: "#{@user.full_name} has been deleted." }
         format.json { head :no_content }
       end
     else

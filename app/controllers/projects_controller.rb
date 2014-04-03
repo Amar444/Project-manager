@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to (:back), notice: 'Project was successfully updated.' }
+        format.html { redirect_to (:back), notice: "#{@project.name} was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
     if current_user.role == "admin" || current_user.role == "administrator"
       @project.destroy
       respond_to do |format|
-        format.html { redirect_to (:back), notice: 'Project has been deleted.' }
+        format.html { redirect_to (:back), notice: "#{@project.name} has been deleted." }
         format.json { head :no_content }
       end
     else
