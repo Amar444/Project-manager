@@ -1,4 +1,6 @@
 Meesterproefconcept::Application.routes.draw do
+  resources :workhours
+
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :projects
   resources :employee

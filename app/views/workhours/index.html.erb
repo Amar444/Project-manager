@@ -1,0 +1,35 @@
+<h1>Listing workhours</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hours</th>
+      <th>Note</th>
+      <th>Date of workhour</th>
+      <th>User</th>
+      <th>Project</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workhours.each do |workhour| %>
+      <tr>
+        <td><%= workhour.hours %></td>
+        <td><%= workhour.note %></td>
+        <td><%= workhour.date_of_workhour %></td>
+        <td><%= workhour.user_id %></td>
+        <td><%= workhour.project_id %></td>
+        <td><%= link_to 'Show', workhour %></td>
+        <td><%= link_to 'Edit', edit_workhour_path(workhour) %></td>
+        <td><%= link_to 'Destroy', workhour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Workhour', new_workhour_path %>
