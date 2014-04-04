@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
     @projects = Project.all  
     projects = current_user.workhours.map { |w| w.project }
     @userprojects = projects.uniq
+
   end
 
   # GET /projects/new
