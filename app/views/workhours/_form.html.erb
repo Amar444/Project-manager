@@ -20,8 +20,9 @@
 				<%= f.input :date_of_workhour , :input_html => { class: "form-control"} %>
 			</div>
 			<div class="field">
-				<%= f.input :project_id , :input_html => { class: "form-control", :style => "width:40%;"} %>
+				<%= f.association :project, :input_html => { class: "form-control", :style => "width:40%;"} %>
 			</div>
+			
 
 		</div>
 		<div class="modal-footer">
