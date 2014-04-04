@@ -4,7 +4,7 @@ class WorkhoursController < ApplicationController
   # GET /workhours
   # GET /workhours.json
   def index
-    @workhours = Workhour.all
+    @workhours = current_user.workhours
   end
 
   # GET /workhours/1
