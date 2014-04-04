@@ -1,15 +1,36 @@
-<%= simple_form_for(@workhour) do |f| %>
-  <%= f.error_notification %>
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				×
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Add new workhour</h4>
+		</div>
+		<%= simple_form_for(@workhour) do |f| %>
+		<div class="modal-body">
+			<%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :hours %>
-    <%= f.input :note %>
-    <%= f.input :date_of_workhour %>
-    <%= f.input :user_id %>
-    <%= f.input :project_id %>
-  </div>
+			<div class="field">
+				<%= f.input :hours, :input_html => { class: "form-control", :style => "width:40%;" } %>
+			</div>
+			<div class="field">
+				<%= f.input :note , :input_html => { class: "form-control", :style => "width:40%;", :placeholder => "Notes" }%>
+			</div>
+			<div class="field">
+				<%= f.input :date_of_workhour , :input_html => { class: "form-control"} %>
+			</div>
+			<div class="field">
+				<%= f.input :project_id , :input_html => { class: "form-control", :style => "width:40%;"} %>
+			</div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">
+				Close
+			</button>
+			<%= f.submit class:"btn btn-primary" %>
+		</div>
+		<% end %>
+	</div>
+</div>
+

@@ -1,34 +1,25 @@
 class WorkhoursController < ApplicationController
   before_action :set_workhour, only: [:show, :edit, :update, :destroy]
 
-  # GET /workhours
-  # GET /workhours.json
   def index
     @workhours = current_user.workhours
   end
 
-  # GET /workhours/1
-  # GET /workhours/1.json
   def show
   end
 
-  # GET /workhours/new
+
   def new
     @workhour = Workhour.new
   end
 
-  # GET /workhours/1/edit
-  def edit
-  end
-
-  # POST /workhours
-  # POST /workhours.json
   def create
     @workhour = Workhour.new(workhour_params)
-
+    @workhour.user = current_user
+    
     respond_to do |format|
       if @workhour.save
-        format.html { redirect_to @workhour, notice: 'Workhour was successfully created.' }
+        format.html { redirect_to (:back), notice: 'Workhour was successfully created.' }
         format.json { render action: 'show', status: :created, location: @workhour }
       else
         format.html { render action: 'new' }
@@ -37,12 +28,13 @@ class WorkhoursController < ApplicationController
     end
   end
 
-  # PATCH/PUT /workhours/1
-  # PATCH/PUT /workhours/1.json
+  def edit
+  end
+
   def update
     respond_to do |format|
       if @workhour.update(workhour_params)
-        format.html { redirect_to @workhour, notice: 'Workhour was successfully updated.' }
+        format.html { redirect_to (:back), notice: 'Workhour was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -51,12 +43,10 @@ class WorkhoursController < ApplicationController
     end
   end
 
-  # DELETE /workhours/1
-  # DELETE /workhours/1.json
   def destroy
     @workhour.destroy
     respond_to do |format|
-      format.html { redirect_to workhours_url }
+      format.html { redirect_to (:back), notice: "Workhour has been deleted." }
       format.json { head :no_content }
     end
   end
@@ -69,6 +59,6 @@ class WorkhoursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workhour_params
-      params.require(:workhour).permit(:hours, :note, :date_of_workhour, :user_id, :project_id)
+      params.require(:workhour).permit(:hours, :note, :date_of_workhour, :project_id)
     end
 end

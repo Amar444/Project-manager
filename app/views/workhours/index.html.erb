@@ -1,4 +1,5 @@
 <h1>Listing workhours</h1>
+<%= link_to 'New Workhour', new_workhour_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-primary"} %>
 
 <table>
   <thead>
@@ -6,7 +7,6 @@
       <th>Hours</th>
       <th>Note</th>
       <th>Date of workhour</th>
-      <th>User</th>
       <th>Project</th>
       <th></th>
       <th></th>
@@ -15,12 +15,11 @@
   </thead>
 
   <tbody>
-    <% @workhours.each do |workhour| %>
+    <% @workhours.reverse_each do |workhour| %>
       <tr>
         <td><%= workhour.hours %></td>
         <td><%= workhour.note %></td>
         <td><%= workhour.date_of_workhour %></td>
-        <td><%= workhour.user_id %></td>
         <td><%= workhour.project_id %></td>
         <td><%= link_to 'Show', workhour %></td>
         <td><%= link_to 'Edit', edit_workhour_path(workhour) %></td>
@@ -32,4 +31,5 @@
 
 <br>
 
-<%= link_to 'New Workhour', new_workhour_path %>
+
+<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
