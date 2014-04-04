@@ -2,34 +2,34 @@
 <%= link_to 'New Workhour', new_workhour_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-primary"} %>
 
 <table>
-  <thead>
-    <tr>
-      <th>Hours</th>
-      <th>Note</th>
-      <th>Date of workhour</th>
-      <th>Project</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>Hours</th>
+			<th>Note</th>
+			<th>Date of workhour</th>
+			<th>Project</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @workhours.reverse_each do |workhour| %>
-      <tr>
-        <td><%= workhour.hours %></td>
-        <td><%= workhour.note %></td>
-        <td><%= workhour.date_of_workhour %></td>
-        <td><%= workhour.project_id %></td>
-        <td><%= link_to 'Show', workhour %></td>
-        <td><%= link_to 'Edit', edit_workhour_path(workhour) %></td>
-        <td><%= link_to 'Destroy', workhour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @workhours.reverse_each do |workhour| %>
+		<% project = workhour.project %>
+		<tr>
+			<td><%= workhour.hours %></td>
+			<td><%= workhour.note %></td>
+			<td><%= workhour.date_of_workhour %></td>
+			<td><%= workhour.project.try(:name) %></td>
+			<td><%= link_to 'Show', workhour %></td>
+			<td><%= link_to 'Edit', edit_workhour_path(workhour), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} %></td>
+			<td><%= link_to 'Destroy', workhour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>
-
 
 <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>

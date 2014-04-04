@@ -8,7 +8,6 @@ class WorkhoursController < ApplicationController
   def show
   end
 
-
   def new
     @workhour = Workhour.new
   end
@@ -16,7 +15,7 @@ class WorkhoursController < ApplicationController
   def create
     @workhour = Workhour.new(workhour_params)
     @workhour.user = current_user
-    
+
     respond_to do |format|
       if @workhour.save
         format.html { redirect_to (:back), notice: 'Workhour was successfully created.' }

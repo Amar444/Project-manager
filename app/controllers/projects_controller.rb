@@ -4,7 +4,8 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all  
-    @userprojects = current_user.projects
+    projects = current_user.workhours.map { |w| w.project }
+    @userprojects = projects.uniq
   end
 
   # GET /projects/new

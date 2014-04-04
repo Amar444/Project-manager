@@ -25,19 +25,19 @@
 			<% end %>
 
 			<div class="field">
-				<%= f.input :full_name, :input_html => { class: "form-control input-width", :placeholder => "Full name" } %>
+				<%= f.input :full_name, :input_html => { class: "form-control", :placeholder => "Full name" } %>
 			</div>
 			<div class="field">
-				<%= f.input :email, :input_html => { class: "form-control input-width", :placeholder => "Email" } %>
+				<%= f.input :email, :input_html => { class: "form-control", :placeholder => "Email" } %>
 			</div>
 			<div class="field">
-				<%= f.input :password, autocomplete: "off",  :input_html => { class: "form-control input-width", :placeholder => "Password" } %>
+				<%= f.input :password, autocomplete: "off",  :input_html => { class: "form-control", :placeholder => "Password" } %>
 			</div>
 			<div class="field">
-				<%= f.input :password_confirmation, autocomplete: "off", :input_html => { class: "form-control input-width", :placeholder => "Confirm password" } %>
+				<%= f.input :password_confirmation, autocomplete: "off", :input_html => { class: "form-control", :placeholder => "Confirm password" } %>
 			</div>
 			<div class="field">
-				<%= f.input :role, :collection => user_ranks, include_blank: false, :input_html => { :class => "form-control combo-width", :onChange => "confirm_role(this)" } %> 
+				<%= f.input :role, :collection => user_ranks, include_blank: false, :input_html => { :class => "form-control", :onChange => "confirm_role(this)" } %> 
 			</div>
 			
 			 
