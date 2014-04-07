@@ -1,26 +1,38 @@
+<h4>View day:</h4>
+<%= form_tag url_for(:action=>"index", :controller=>"workhours"), :method => "get" do %> 
+	<div class="field input-group date">
+		<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
+		<%= text_field_tag :workhour_day %>
+	</div>
+	<%= submit_tag "Go", class:"btn btn-primary glyphicon glyphicon-share-alt", :style => "top:0px; line-height:20px;"  %>
+	back to today
+<% end %>
+
+Showing: <%= params[:workhour_day] %>
 <div style="width:600px;margin:0px;">
-<%= render 'workhours/new' %>
+	<%= render 'workhours/new' %>
 </div>
 
 <h4>Time entered for today: <%= @workhours.map(&:hours).sum  %> hours</h4>
 
-
 <div class="time-entries-today">
-<% @workhours.reverse_each do |workhour| %>
-<% project = workhour.project %>
+	<% @workhours.reverse_each do |workhour| %>
+	<% project = workhour.project %>
 
 	<div class="workhour-listing">
 		<div class="time">
 			<div>
-				Hours: <br />
+				Hours:
+				<br />
 				<b><%= workhour.hours %></b>
 			</div>
 		</div>
 		<div class="title">
-			Project: <b><%= workhour.project.try(:name) %> </b><br />
+			Project: <b><%= workhour.project.try(:name) %> </b>
+			<br />
 			<% if (workhour.note.present?) %>
-				<br>Note:
-				<i><%= workhour.note %></i>
+			<br>
+			Note: <i><%= workhour.note %></i>
 			<% end %>
 		</div>
 		<div class="edit">
@@ -30,8 +42,7 @@
 
 	</div>
 	<div style="clear:both;"></div>
-<% end %>
+	<% end %>
 </div>
-
 
 <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>

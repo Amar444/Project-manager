@@ -2,7 +2,12 @@ class WorkhoursController < ApplicationController
   before_action :set_workhour, only: [:show, :edit, :update, :destroy]
 
   def index
-    @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour == Date.today }
+    if (params[:workhour_day].present?)
+      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.strftime('%d-%m-%Y') == params[:workhour_day] }
+    else
+      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour == Date.today }
+    end
+      
     @workhour = Workhour.new
   end
 
