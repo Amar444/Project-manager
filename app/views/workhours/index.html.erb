@@ -1,35 +1,37 @@
-<h1>Listing workhours</h1>
-<%= link_to 'New Workhour', new_workhour_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-primary"} %>
+<div style="width:600px;margin:0px;">
+<%= render 'workhours/new' %>
+</div>
 
-<table>
-	<thead>
-		<tr>
-			<th>Hours</th>
-			<th>Note</th>
-			<th>Date of workhour</th>
-			<th>Project</th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
+<h4>Time entered for today: <%= @workhours.map(&:hours).sum  %> hours</h4>
 
-	<tbody>
-		<% @workhours.reverse_each do |workhour| %>
-		<% project = workhour.project %>
-		<tr>
-			<td><%= workhour.hours %></td>
-			<td><%= workhour.note %></td>
-			<td><%= workhour.date_of_workhour %></td>
-			<td><%= workhour.project.try(:name) %></td>
-			<td><%= link_to 'Show', workhour %></td>
-			<td><%= link_to 'Edit', edit_workhour_path(workhour), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} %></td>
-			<td><%= link_to 'Destroy', workhour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
 
-<br>
+<div class="time-entries-today">
+<% @workhours.reverse_each do |workhour| %>
+<% project = workhour.project %>
+
+	<div class="workhour-listing">
+		<div class="time">
+			<div>
+				Hours: <br />
+				<b><%= workhour.hours %></b>
+			</div>
+		</div>
+		<div class="title">
+			Project: <b><%= workhour.project.try(:name) %> </b><br />
+			<% if (workhour.note.present?) %>
+				<br>Note:
+				<i><%= workhour.note %></i>
+			<% end %>
+		</div>
+		<div class="edit">
+			<%= link_to 'Edit', edit_workhour_path(workhour), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} %>
+			<%= link_to '', workhour, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash btn btn-danger", :style => "top:0px; line-height:20px;" %>
+		</div>
+
+	</div>
+	<div style="clear:both;"></div>
+<% end %>
+</div>
+
 
 <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>

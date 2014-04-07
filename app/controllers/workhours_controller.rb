@@ -2,7 +2,8 @@ class WorkhoursController < ApplicationController
   before_action :set_workhour, only: [:show, :edit, :update, :destroy]
 
   def index
-    @workhours = current_user.workhours
+    @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour == Date.today }
+    @workhour = Workhour.new
   end
 
   def show

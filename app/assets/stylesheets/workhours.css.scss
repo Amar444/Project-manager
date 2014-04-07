@@ -1,0 +1,46 @@
+.workhours-new {
+  max-width:600px;
+}
+
+.workhour-listing {
+  width:600px;
+  border: 1px solid #EDEDED;
+  border-bottom: 3px solid #AAAAA9;
+  margin-bottom: 25px;
+  min-height:85px;
+}
+
+.time{
+  position:relative;
+  //float:left;
+  padding:17px 5px 0 5px;
+}
+.time div {
+  float:left;
+  width:140px;
+  text-align:center;
+  color: #575757;
+  font-size:18px;
+}
+
+.title{
+  //float:left;
+  //margin:10px 0;
+  padding: 0 20px;
+  margin-left:150px;
+  border-left:1px solid #d9d9d9;
+  min-height:55px
+}
+
+.edit{
+  //float:left;
+  // margin-top: -40px;
+  position:relative;
+  text-align:center;
+  top:17px;
+  width:100%;
+}
+
+.time-entries-today {
+  
+}
