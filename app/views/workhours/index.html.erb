@@ -1,19 +1,17 @@
 <h4>View day:</h4>
-<%= form_tag url_for(:action=>"index", :controller=>"workhours"), :method => "get" do %> 
+ <form action='<%= url_for(:action=>"index", :controller=>"workhours") %>' method ="get" class="view-day-form">
 	<div class="field input-group date">
 		<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
-		<%= text_field_tag :workhour_day %>
+		<%= text_field_tag :workhour_day, @dateparam, :class=>"form-control view-day" %>
 	</div>
-	<%= submit_tag "Go", class:"btn btn-primary glyphicon glyphicon-share-alt", :style => "top:0px; line-height:20px;"  %>
-	back to today
-<% end %>
+	<a href="/workhours">Back to today</a>
+</form>
 
-Showing: <%= params[:workhour_day] %>
 <div style="width:600px;margin:0px;">
 	<%= render 'workhours/new' %>
 </div>
 
-<h4>Time entered for today: <%= @workhours.map(&:hours).sum  %> hours</h4>
+<h4>Time entered for <%= @dateparam %>:<b> <%= @workhours.map(&:hours).sum %> </b>hours</h4>
 
 <div class="time-entries-today">
 	<% @workhours.reverse_each do |workhour| %>

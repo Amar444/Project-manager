@@ -9,6 +9,13 @@ class WorkhoursController < ApplicationController
     end
       
     @workhour = Workhour.new
+      
+    if (params[:workhour_day].present?)
+      @dateparam = params[:workhour_day]
+    else 
+      @dateparam = Date.today.strftime('%d-%m-%Y')
+    end
+    
   end
 
   def show
