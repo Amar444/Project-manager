@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
     @projects = Project.all  
     projects = current_user.workhours.map { |w| w.project }
     @userprojects = projects.uniq
+    @mapped = @userprojects.map { |project| project.workhours.select { |item| item.id == current_user.id }.map{}.sum }
 
   end
 

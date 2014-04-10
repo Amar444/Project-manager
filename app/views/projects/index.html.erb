@@ -27,10 +27,11 @@
 
 				<tbody>
 					<% @userprojects.each do |project| %>
+					<% iets = project.workhours.select{ |item| item.id == current_user.id } %>
 					<tr>
 						<td><%= project.name %></td>
 						<td><%= project.description %></td>
-						<td><%= current_user.workhours.map(&:hours).sum %></td>
+						<td>Nope</td>
 						<td class="last"> <% if current_user.role == "admin" || current_user.role == "moderator" %>
 						<%= link_to 'Delete', project, method: :delete, data: { confirm: "Are you sure you want to delete the project \'#{project.name}\' and all it\'s workhours from everybody?" },  class: "btn btn-danger"  %>
 						<% end %>
