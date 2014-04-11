@@ -1,21 +1,39 @@
 <% if user_signed_in? %>
-	<% if current_user.full_name == "admin" || current_user.email == "admin@first.com" %>
-		<div class="pull-right first-login-notice" style="text-align: right;">
-			<span class="glyphicon glyphicon-arrow-up" style="font-size:50px !important; margin-top:-35px;"></span>
-			<br>
-			<div style="float:right; text-align:left; margin-bottom:10px;">
-				<b>Please edit your profile!</b><br />
-				Change your: <br />
-				<% if current_user.full_name == "admin" %>
-				- Name <br />
-				<% end %>
-				<% if current_user.email == "admin@first.com" %>
-				- Email <br />
-				<% end %>
-				<% if current_user.full_name == "admin" || current_user.email == "admin@first.com" %>
-				- Password <br />
-				<% end %>
-			</div>
-		</div>
-	<% end %>
+<% if current_user.full_name == "admin" || current_user.email == "admin@first.com" %>
+<div class="pull-right first-login-notice" style="text-align: right;">
+	<span class="glyphicon glyphicon-arrow-up" style="font-size:50px !important; margin-top:-35px;"></span>
+	<br>
+	<div style="float:right; text-align:left; margin-bottom:10px;">
+		<b>Please edit your profile!</b>
+		<br />
+		Change your:
+		<br />
+		<% if current_user.full_name == "admin" %>
+		- Name
+		<br />
+		<% end %>
+		<% if current_user.email == "admin@first.com" %>
+		- Email
+		<br />
+		<% end %>
+		<% if current_user.full_name == "admin" || current_user.email == "admin@first.com" %>
+		- Password
+		<br />
+		<% end %>
+	</div>
+</div>
 <% end %>
+<% end %>
+
+
+<!-- TO DO: -->
+<div class="pull-right first-login-notice" style="width:200px;">
+	<div style="text-align:left; margin-bottom:10px;">
+		<b>To do:</b>
+		<br />
+		- Time# weekly timesheet <br />
+		- Time# validate hours  <br />		
+		- Project# show users <br />
+		- User# show last projects<br />	
+	</div>
+</div>
