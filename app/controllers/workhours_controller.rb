@@ -2,23 +2,19 @@ class WorkhoursController < ApplicationController
   before_action :set_workhour, only: [:show, :edit, :update, :destroy]
 
   def index
-    if (params[:workhour_day].present?)
-      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.strftime('%d-%m-%Y') == params[:workhour_day] }
-    else
-      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour == Date.today }
-    end
-      
+    dateparam = params[:workhour_day]
     @workhour = Workhour.new
-      
-    if (params[:workhour_day].present?)
-      @dateparam = params[:workhour_day]
-    else 
-      @dateparam = Date.today.strftime('%d-%m-%Y')
-    end
     
-  end
-
-  def show
+    if (dateparam.present?)
+      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.strftime('%d-%m-%Y').to_date == dateparam.to_date }
+      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.strftime('%d-%m-%Y').to_date.cweek == dateparam.to_date.cweek }
+      @dateparam = dateparam.to_date
+    else
+      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.to_date == Date.today }
+      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.to_date.cweek == Date.today.to_date.cweek }
+      @dateparam = Date.today.strftime('%d-%m-%Y').to_date
+    end
+      
   end
 
   def new

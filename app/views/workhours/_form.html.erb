@@ -13,7 +13,7 @@
 			<b>Date:</b>
 			<div class="field input-group date">
 				<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
-				<%= f.text_field :date_of_workhour, order: [:day, :month, :year],class: "form-control" %>
+				<%= f.text_field :date_of_workhour, :value => @workhour.date_of_workhour, class: "form-control" %>
 			</div>
 
 			<div class="field" style="width:20%;float:left;margin-right:1%;">

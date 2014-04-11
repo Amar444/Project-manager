@@ -1,14 +1,22 @@
 <div class="modal-dialog">
 	<div class="modal-content workhours-new">
 		<div class="modal-header">
-			<h4 class="modal-title" id="myModalLabel">Add new workhour</h4>
+			
+			<h4>View day:</h4>
+			<form action='<%= url_for(:action=>"index", :controller=>"workhours") %>' method ="get" class="view-day-form">
+				<div class="field input-group date">
+					<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
+					<%= text_field_tag :workhour_day, @dateparam, :class=>"form-control view-day" %>
+				</div>
+				<a href="/workhours">Back to today</a>
+			</form>
+			
 		</div>
 		<%= simple_form_for(@workhour) do |f| %>
 		<div class="modal-body">
 			<%= f.error_notification %>
 
-			
-			<div class="field input-group date">
+			<div class="field input-group date"  style="display:none;">
 				<span class="input-group-addon"> <i class="glyphicon glyphicon-calendar"></i> </span>
 				<%= f.text_field :date_of_workhour, :value => @dateparam , class: "form-control" %>
 			</div>
@@ -22,7 +30,6 @@
 			<div class="field">
 				<%= f.input :note ,as: :text, :input_html => { class: "form-control",  :placeholder => "Notes", :style => "width:100%;" }%>
 			</div>
-			
 
 		</div>
 		<div class="modal-footer">
