@@ -4,7 +4,7 @@
 
 <h4>Time entered for <%= @dateparam.to_formatted_s(:long) %>:<b> <%= @workhours.map(&:hours).sum %> </b>hours</h4>
 <h5>Time entered for week <%= @dateparam.cweek %>: <b><%= @weekhours.map(&:hours).sum %></b> hours  <br />
-	<%= link_to "Timesheet for week #{@dateparam.cweek}", weekly_workhours_path(:week => @dateparam.cweek) %>
+	<%= link_to "Timesheet for week #{@dateparam.cweek}", weekly_workhours_path(:week => @dateparam.cweek, :year => @dateparam.year ) %>
 </h5>
 
 <div class="time-entries-today">
@@ -20,7 +20,7 @@
 			</div>
 		</div>
 		<div class="title">
-			Project: <b><%= workhour.project.try(:name) %> </b>
+			Project: <b><%= project.try(:name) %> </b>
 			<br />
 			<% if (workhour.note.present?) %>
 			<br>

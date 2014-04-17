@@ -6,24 +6,30 @@ class WorkhoursController < ApplicationController
     @workhour = Workhour.new
     
     if (dateparam.present?)
-      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.strftime('%d-%m-%Y').to_date == dateparam.to_date }
-      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.strftime('%d-%m-%Y').to_date.cweek == dateparam.to_date.cweek }
+      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour == dateparam.to_date }
+      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.cweek == dateparam.to_date.cweek }
       @dateparam = dateparam.to_date
     else
-      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.to_date == Date.today }
-      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.to_date.cweek == Date.today.to_date.cweek }
-      @dateparam = Date.today.strftime('%d-%m-%Y').to_date
+      @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour == Date.today }
+      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.cweek == Date.today.to_date.cweek }
+      @dateparam = Date.today
     end   
   end
   
   def weekly
     weekparam = params[:week]
+    yearparam = params[:year]
     
-    if (weekparam.present?)
-      @week = weekparam
+    if (weekparam.present? && yearparam.present?)
+      @week = weekparam.to_i
+      @year = yearparam.to_i
+      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.cweek == @week && workhour.date_of_workhour.year == @year }.sort_by {|date| date[:date_of_workhour]}.group_by{ |day| day.date_of_workhour } 
     else
-      @week = Date.today.to_date.cweek
+      @week = Date.today.cweek
+      @year = Date.today.year
+      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.cweek == @week && workhour.date_of_workhour.year == @year }.sort_by {|date| date[:date_of_workhour]}.group_by{ |day| day.date_of_workhour } 
     end
+    
   end
 
   def new

@@ -1,3 +1,42 @@
-Weekly timesheet for week <%= @week %>
+Weekly timesheet for week <%= @week %> of <%= @year %>
 
 <!-- Als @week leeg is, deze week pakken, anders @week -->
+
+
+
+<div class="time-entries-today">
+	<% @weekhours.each_pair do |day, workhours| %>
+	
+		<%= "#{day.strftime('%A')} #{day}" %>
+	
+		<% workhours.each do |workhour| %>
+		
+			<% project = workhour.project %> 
+			
+			<div class="workhour-listing">
+				<div class="time">
+					<div>
+						Hours:
+						<br />
+						<b><%= workhour.hours %></b>
+					</div>
+				</div>
+				<div class="title">
+					Project: <b><%= project.try(:name) %> </b>
+					<br />
+					<% if (workhour.note.present?) %>
+					<br>
+					Note: <i><%= workhour.note %></i>
+					<% end %>
+				</div>
+				<div class="edit">
+					<%= link_to 'Edit', edit_workhour_path(workhour), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} %>
+					<%= link_to '', workhour, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash btn btn-danger", :style => "top:0px; line-height:20px;" %>
+				</div>
+		
+			</div>
+			<div style="clear:both;"></div>
+	
+		<% end %>
+	<% end %>
+</div>
