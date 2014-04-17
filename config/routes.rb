@@ -1,5 +1,9 @@
 Meesterproefconcept::Application.routes.draw do
-  resources :workhours
+  resources :workhours do
+    collection do
+       get 'weekly'
+    end
+  end
 
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :projects

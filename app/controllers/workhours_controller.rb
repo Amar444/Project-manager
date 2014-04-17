@@ -13,8 +13,17 @@ class WorkhoursController < ApplicationController
       @workhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.to_date == Date.today }
       @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.to_date.cweek == Date.today.to_date.cweek }
       @dateparam = Date.today.strftime('%d-%m-%Y').to_date
+    end   
+  end
+  
+  def weekly
+    weekparam = params[:week]
+    
+    if (weekparam.present?)
+      @week = weekparam
+    else
+      @week = Date.today.to_date.cweek
     end
-      
   end
 
   def new

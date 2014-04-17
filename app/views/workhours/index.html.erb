@@ -3,7 +3,9 @@
 </div>
 
 <h4>Time entered for <%= @dateparam.to_formatted_s(:long) %>:<b> <%= @workhours.map(&:hours).sum %> </b>hours</h4>
-<h5>Time entered for week <%= @dateparam.cweek %>: <b><%= @weekhours.map(&:hours).sum %></b> hours  (view weekly timesheet)</h5>
+<h5>Time entered for week <%= @dateparam.cweek %>: <b><%= @weekhours.map(&:hours).sum %></b> hours  <br />
+	<%= link_to "Timesheet for week #{@dateparam.cweek}", weekly_workhours_path(:week => @dateparam.cweek) %>
+</h5>
 
 <div class="time-entries-today">
 	<% @workhours.reverse_each do |workhour| %>
