@@ -2,4 +2,5 @@ eclipse.preferences.version=1
 encoding//app/views/employee/_form.html.erb=UTF-8
 encoding//app/views/employee/_form_new.html.erb=UTF-8
 encoding//app/views/projects/_form.html.erb=UTF-8
+encoding//app/views/projects/_show.html.erb=UTF-8
 encoding//app/views/workhours/_form.html.erb=UTF-8

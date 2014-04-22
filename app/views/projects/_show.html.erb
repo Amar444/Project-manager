@@ -1,0 +1,39 @@
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+				×
+			</button>
+			<h4 class="modal-title" id="myModalLabel">Project participaters</h4>
+		</div>
+		<%= simple_form_for(@project) do |f| %>
+		<div class="modal-body">
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @project.users.uniq.each do |user| %>
+					<tr>
+						<td><%= user.full_name %></td>
+						<td><%= user.email %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">
+				Close
+			</button>
+		</div>
+		<% end %>
+	</div>
+</div>
+
