@@ -7,7 +7,7 @@ Weekly timesheet for week <%= @week %> of <%= @year %>
 <div class="time-entries-today">
 	<% @weekhours.each_pair do |day, workhours| %>
 	
-		<%= "#{day.strftime('%A')} #{day}" %>
+		<b><%= day.strftime('%A')  %></b>  <%= day %>
 	
 		<% workhours.each do |workhour| %>
 		

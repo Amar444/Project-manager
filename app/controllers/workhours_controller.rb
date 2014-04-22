@@ -45,7 +45,7 @@ class WorkhoursController < ApplicationController
         format.html { redirect_to (:back), notice: 'Workhour was successfully created.' }
         format.json { render action: 'show', status: :created, location: @workhour }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to (:back), alert: 'Hour must be between 0 and 24' }
         format.json { render json: @workhour.errors, status: :unprocessable_entity }
       end
     end
@@ -60,7 +60,7 @@ class WorkhoursController < ApplicationController
         format.html { redirect_to (:back), notice: 'Workhour was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { redirect_to (:back), alert: 'Hour must be between 0 and 24' }
         format.json { render json: @workhour.errors, status: :unprocessable_entity }
       end
     end
