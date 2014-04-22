@@ -3,6 +3,15 @@ class EmployeeController < ApplicationController
   def index
     @user = User.all
   end
+  
+  def show
+    @user = User.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   #new -> create
   def new
