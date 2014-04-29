@@ -23,13 +23,13 @@ class WorkhoursController < ApplicationController
     if (weekparam.present? && yearparam.present?)
       @week = weekparam.to_i
       @year = yearparam.to_i
-      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.cweek == @week && workhour.date_of_workhour.year == @year }.sort_by {|date| date[:date_of_workhour]}.group_by{ |day| day.date_of_workhour }
     else
       @week = Date.today.cweek
       @year = Date.today.year
-      @weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.cweek == @week && workhour.date_of_workhour.year == @year }.sort_by {|date| date[:date_of_workhour]}.group_by{ |day| day.date_of_workhour } 
     end
-    
+     weekhours = current_user.workhours.select{ |workhour| workhour.date_of_workhour.cweek == @week && workhour.date_of_workhour.year == @year }.sort_by {|date| date[:date_of_workhour]}
+     @weekhours = weekhours.group_by{ |day| day.date_of_workhour }
+     @sumhours = weekhours.map(&:hours).sum 
   end
 
   def new
