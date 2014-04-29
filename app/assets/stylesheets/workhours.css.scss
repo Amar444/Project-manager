@@ -1,9 +1,18 @@
+.workhour-container {
+  margin:0 auto;
+  width:700px;
+}
+
+.new-workhour-container {
+  
+}
+
 .workhours-new {
   max-width:600px;
 }
 
 .workhour-listing {
-  width:600px;
+  
   border: 1px solid #EDEDED;
   border-bottom: 3px solid #AAAAA9;
   margin-bottom: 25px;
@@ -43,4 +52,9 @@
 
 .time-entries-today {
   
+}
+
+.weekly-wrapper{
+  width:700px;
+  margin:0 auto;
 }

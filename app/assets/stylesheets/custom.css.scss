@@ -3,9 +3,29 @@ html {
   overflow-y: scroll;
 }
 
+.navbar {
+  position: inherit !important;
+}
+
+.content-container {
+  //width:700px !important;
+}
+
 /* Header */
 .loginas {
   line-height: 34px;
+}
+.rolename {
+  color:#5cb85c;
+}
+.navbar-default {
+  background-color:#2D3241 !important;
+}
+.navbar.navbar-default li a {
+  color: #fff !important;
+}
+.navbar-default .navbar-brand {
+  color: #fff !important;
 }
 
 /* Footer */

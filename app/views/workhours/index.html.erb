@@ -1,40 +1,44 @@
-<div style="width:600px;margin:0px;">
-	<%= render 'workhours/new' %>
-</div>
+<div class="workhour-container">
 
-<h4>Time entered for <%= @dateparam.to_formatted_s(:long) %>:<b> <%= @workhours.map(&:hours).sum %> </b>hours</h4>
-<h5>Time entered for week <%= @dateparam.cweek %>: <b><%= @weekhours.map(&:hours).sum %></b> hours  <br />
-	<%= link_to "Timesheet for week #{@dateparam.cweek}", weekly_workhours_path(:week => @dateparam.cweek, :year => @dateparam.year ) %>
-</h5>
-
-<div class="time-entries-today">
-	<% @workhours.reverse_each do |workhour| %>
-	<% project = workhour.project %> 
-
-	<div class="workhour-listing">
-		<div class="time">
-			<div>
-				Hours:
-				<br />
-				<b><%= workhour.hours %></b>
-			</div>
-		</div>
-		<div class="title">
-			Project: <b><%= project.try(:name) %> </b>
-			<br />
-			<% if (workhour.note.present?) %>
-			<br>
-			Note: <i><%= workhour.note %></i>
-			<% end %>
-		</div>
-		<div class="edit">
-			<%= link_to 'Edit', edit_workhour_path(workhour), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} %>
-			<%= link_to '', workhour, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash btn btn-danger", :style => "top:0px; line-height:20px;" %>
-		</div>
-
+	<div class="new-workhour-container">
+		<%= render 'workhours/new' %>
 	</div>
-	<div style="clear:both;"></div>
-	<% end %>
+	
+	<h4>Time entered for <%= @dateparam.to_formatted_s(:long) %>:<b> <%= @workhours.map(&:hours).sum %> </b>hours</h4>
+	<h5>Time entered for week <%= @dateparam.cweek %>: <b><%= @weekhours.map(&:hours).sum %></b> hours  <br />
+		<%= link_to "Timesheet for week #{@dateparam.cweek}", weekly_workhours_path(:week => @dateparam.cweek, :year => @dateparam.year ) %>
+	</h5>
+	
+	<div class="time-entries-today">
+		<% @workhours.reverse_each do |workhour| %>
+		<% project = workhour.project %> 
+	
+		<div class="workhour-listing">
+			<div class="time">
+				<div>
+					Hours:
+					<br />
+					<b><%= workhour.hours %></b>
+				</div>
+			</div>
+			<div class="title">
+				Project: <b><%= project.try(:name) %> </b>
+				<br />
+				<% if (workhour.note.present?) %>
+				<br>
+				Note: <i><%= workhour.note %></i>
+				<% end %>
+			</div>
+			<div class="edit">
+				<%= link_to 'Edit', edit_workhour_path(workhour), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"} %>
+				<%= link_to '', workhour, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash btn btn-danger", :style => "top:0px; line-height:20px;" %>
+			</div>
+	
+		</div>
+		<div style="clear:both;"></div>
+		<% end %>
+	</div>
+
 </div>
 
 <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>

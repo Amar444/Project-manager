@@ -38,9 +38,9 @@
 
 			<div class="nav navbar-text navbar-right">
 				<% if current_user.role == "admin" %>
-				<span style="color:red;"> ADMIN </span>
+				<span class="rolename"> ADMIN </span>
 				<% elsif current_user.role == "moderator" %>
-				<span style="color:red;"> MODERATOR </span>
+				<span class="rolename"> MODERATOR </span>
 				<% end %>
 			</div>
 			<% end %>
