@@ -1,11 +1,7 @@
 <div class="weekly-wrapper">
 
-	Weekly timesheet for week <%= @week %> of <%= @year %>
-	
-	<!-- Als @week leeg is, deze week pakken, anders @week -->
-	
-	
-	
+	<p><h3>Weekly timesheet for week <%= @week %> of <%= @year %></h3></p>
+
 	<div class="time-entries-today">
 		<% @weekhours.each_pair do |day, workhours| %>
 		
@@ -38,9 +34,9 @@
 			
 				</div>
 				<div style="clear:both;"></div>
-		
 			<% end %>
 		<% end %>
+		Total hours for this week: 
 	</div>
 
 </div>
