@@ -1,12 +1,14 @@
 <div class="workhour-container">
 	
-	<p><h2>Create Workhour</h2></p>
+	<p>
+		<h2>Create Workhour</h2>
+		<h3><%= @dateparam.strftime('%A') %></h3>
+	</p>
 	
 	<div class="new-workhour-container">
 		<%= render 'workhours/new' %>
 	</div>
 	
-	<h4>Time entered for <%= @dateparam.to_formatted_s(:long) %>:<b> <%= @workhours.map(&:hours).sum %> </b>hours</h4>
 	<h5>Time entered for week <%= @dateparam.cweek %>: <b><%= @weekhours.map(&:hours).sum %></b> hours  <br />
 		<%= link_to "Timesheet for week #{@dateparam.cweek}", weekly_workhours_path(:week => @dateparam.cweek, :year => @dateparam.year ) %>
 	</h5>
@@ -40,6 +42,8 @@
 		<div style="clear:both;"></div>
 		<% end %>
 	</div>
+	
+	<h4>Total this week: <b><%= @workhours.map(&:hours).sum %> </b>hours</h4>
 
 </div>
 
