@@ -25,7 +25,7 @@
 				<%= f.input :hours, :input_html => { class: "form-control" } %>
 			</div>
 			<div class="field" style="width:79%; float:left;">
-				<%= f.association :project, :input_html => { class: "form-control"} %>
+				<%= f.association :project, collection: Project.where(is_active: true), :input_html => { class: "form-control"} %>
 			</div>
 			<div class="field">
 				<%= f.input :note ,as: :text, :input_html => { class: "form-control",  :placeholder => "Notes", :style => "width:100%;" }%>
