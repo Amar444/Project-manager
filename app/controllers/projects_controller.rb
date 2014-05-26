@@ -3,7 +3,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all  
+    @projects = Project.where(is_active: true)
+    @inactive_projects = Project.where(is_active: false)  
     projects = current_user.workhours.map { |w| w.project }
     @userprojects = projects.uniq
    
@@ -75,6 +76,26 @@ class ProjectsController < ApplicationController
       end
     end
   end
+  
+  def makeActive
+    if current_user.role == "admin" || current_user.role == "administrator"
+      Project.find(params[:project_id]).update_attributes(:is_active => true )
+      respond_to do |format|
+        format.html { redirect_to (:back), notice: "#{Project.find(params[:project_id]).name} has been moved to active projects." }
+        format.json { head :no_content }
+      end
+    end
+  end
+  
+  def makeInactive
+    if current_user.role == "admin" || current_user.role == "administrator"
+      Project.find(params[:project_id]).update_attributes(:is_active => false )
+      respond_to do |format|
+        format.html { redirect_to (:back), notice: "#{Project.find(params[:project_id]).name} has been moved to inactive projects." }
+        format.json { head :no_content }
+      end
+    end
+  end
 
   private
 
@@ -85,6 +106,6 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, :is_active)
   end
 end

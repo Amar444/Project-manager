@@ -6,7 +6,10 @@ Meesterproefconcept::Application.routes.draw do
   end
 
   devise_for :users, :controllers => {:registrations => "registrations"}
-  resources :projects
+  resources :projects do
+    post :makeActive
+    post :makeInactive
+  end
   resources :employee
 
   devise_scope :user do

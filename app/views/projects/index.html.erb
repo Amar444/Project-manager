@@ -10,6 +10,11 @@
 	<li>
 		<a href="#allPr" data-toggle="tab">All Projects</a>
 	</li>
+	<% if current_user.role == "admin" || current_user.role == "moderator" %>
+	<li>
+		<a href="#inactivePr" data-toggle="tab">Inactive Projects</a>
+	</li>
+	<% end %>
 </ul>
 
 <div class="tab-content">
@@ -59,8 +64,9 @@
 						<td><%= project.name %></td>
 						<td><%= project.description %></td>
 						<td><%= project.workhours.map(&:hours).sum %></td>
+						<td></td>
 						<td class="last"> <% if current_user.role == "admin" || current_user.role == "moderator" %>
-						<%= link_to 'Delete', project, method: :delete, data: { confirm: "Are you sure you want to delete the project \'#{project.name}\' and all it\'s workhours from everybody?" },  class: "btn btn-danger"  %>
+						<%= link_to 'Make inactive', project_makeInactive_path(project), method: :post, data: { confirm: "Are you sure you want to make \'#{project.name}\' inactive?" },  class: "btn btn-danger"  %>
 						<% end %>
 						<%= link_to 'Edit', edit_project_path(project), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-info"}  %> 
 						<%= link_to 'Show users', project, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-success"}  %>
@@ -71,6 +77,37 @@
 			</table>
 		</div>
 	</div>
+	 <% if current_user.role == "admin" || current_user.role == "moderator" %>
+	<div class="tab-pane" id="inactivePr">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>All hours</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @inactive_projects.each do |project| %>
+					<tr>
+						<td><%= project.name %></td>
+						<td><%= project.description %></td>
+						<td><%= project.workhours.map(&:hours).sum %></td>
+						<td class="last">
+						<%= link_to 'Delete', project, method: :delete, data: { confirm: "Are you sure you want to delete the project \'#{project.name}\' and all it\'s workhours from everybody?" },  class: "btn btn-danger"  %>	
+						<%= link_to 'Make active', project_makeActive_path(project),method: :post, data: { confirm: "Are you sure you want to make \'#{project.name}\' active?" },  class: "btn btn-success"  %>
+						<% end %> 
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<% end %>
 </div>
 
 <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
