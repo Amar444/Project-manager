@@ -8,7 +8,11 @@ class ProjectsController < ApplicationController
     projects = current_user.workhours.map { |w| w.project }
     @userprojects = projects.uniq
    
-   @projects_with_hours = @userprojects.map do |project|
+   @active_projects_with_hours = @userprojects.select{ |m| m.is_active == true }.map do |project|
+     hours = project.workhours_by_user(current_user.id).map(&:hours).sum
+     OpenStruct.new(project: project, hours: hours)
+   end
+   @inactive_projects_with_hours = @userprojects.select{ |m| m.is_active == false }.map do |project|
      hours = project.workhours_by_user(current_user.id).map(&:hours).sum
      OpenStruct.new(project: project, hours: hours)
    end

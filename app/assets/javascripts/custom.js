@@ -5,6 +5,10 @@ $(function() {
 		$('.newpassword').slideToggle();
 	});
 	
+	$('.show-inactive-participated-projects').on('click', function(){
+		$('.inactive-participated-projects').slideToggle();
+	});
+	
 	
 	$('.input-group.date').datepicker({
 		"format" : "dd-mm-yyyy",

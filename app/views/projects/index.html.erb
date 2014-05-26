@@ -20,6 +20,7 @@
 <div class="tab-content">
 	<div class="tab-pane active" id="yourPr">
 		<div class="table-responsive">
+			<h2>Active projects</h2>
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -31,7 +32,7 @@
 				</thead>
 
 				<tbody>
-					<% @projects_with_hours.each do |project_with_hours| %>
+					<% @active_projects_with_hours.each do |project_with_hours| %>
 					<tr>
 						<td><%= project_with_hours.project.name %></td>
 						<td><%= project_with_hours.project.description %></td>
@@ -44,6 +45,34 @@
 					<% end %>
 				</tbody>
 			</table>
+			<button class="btn btn-info show-inactive-participated-projects">Show inactive projects</button>
+			<div class="inactive-participated-projects">
+				<h2>Inactive projects</h2>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Your hours</th>
+							<th></th>
+						</tr>
+					</thead>
+	
+					<tbody>
+						<% @inactive_projects_with_hours.each do |project_with_hours| %>
+						<tr>
+							<td><%= project_with_hours.project.name %></td>
+							<td><%= project_with_hours.project.description %></td>
+							<td><%= project_with_hours.hours %></td>
+							<td class="last">
+								<%= link_to 'Show users', project_with_hours.project, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window',:class => "btn btn-success"}  %> 
+							</td>
+							
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<div class="tab-pane" id="allPr">
