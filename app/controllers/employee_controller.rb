@@ -2,6 +2,8 @@ class EmployeeController < ApplicationController
   before_filter :check_role
   def index
     @user = User.all
+    @inactive_users = User.where(is_active: false)  
+    @active_users = User.where(is_active: true)  
   end
   
   def show
@@ -71,6 +73,28 @@ class EmployeeController < ApplicationController
 
   def new_user_params
     params.require(:user).permit(:email,:full_name, :password, :password_confirmation, :role)
+  end
+  
+  def makeUserActive
+    @user = User.find(params[:employee_id])
+    if current_user.role == "admin" || current_user.role == "administrator"
+      User.find(params[:employee_id]).update_attributes(:is_active => true )
+      respond_to do |format|
+        format.html { redirect_to (:back), notice: "#{@user.full_name}has been moved to active users." }
+        format.json { head :no_content }
+      end
+    end
+  end
+  
+  def makeUserInactive
+    @user = User.find(params[:employee_id])
+    if current_user.role == "admin" || current_user.role == "administrator"
+      User.find(params[:employee_id]).update_attributes(:is_active => false )
+      respond_to do |format|
+        format.html { redirect_to (:back), notice: "#{@user.full_name} has been moved to inactive users." }
+        format.json { head :no_content }
+      end
+    end
   end
 
   protected

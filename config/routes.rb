@@ -10,7 +10,11 @@ Meesterproefconcept::Application.routes.draw do
     post :makeActive
     post :makeInactive
   end
-  resources :employee
+  
+  resources :employee do
+    post :makeUserActive
+    post :makeUserInactive
+  end
 
   devise_scope :user do
     authenticated :user do

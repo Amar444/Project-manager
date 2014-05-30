@@ -9,6 +9,10 @@ $(function() {
 		$('.inactive-participated-projects').slideToggle();
 	});
 	
+	$('.show-inactive-users').on('click', function(){
+		$('.inactive-users').slideToggle();
+	});
+	
 	
 	$('.input-group.date').datepicker({
 		"format" : "dd-mm-yyyy",
