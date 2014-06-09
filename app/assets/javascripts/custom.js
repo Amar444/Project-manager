@@ -21,6 +21,7 @@ $(function() {
 		"calendarWeeks" : true,
 		"todayHighlight" : true,
 		"endDate" : "0d",
+		 "weekStart": 1
 	});
 	
 	$('.view-day').change(function(){

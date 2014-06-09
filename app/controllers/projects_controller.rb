@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    if current_user.role == "admin" || current_user.role == "administrator"
+    if current_user.role == "admin" || current_user.role == "moderator"
       @project.destroy
       respond_to do |format|
         format.html { redirect_to (:back), notice: "#{@project.name} has been deleted." }
@@ -82,7 +82,7 @@ class ProjectsController < ApplicationController
   end
   
   def makeActive
-    if current_user.role == "admin" || current_user.role == "administrator"
+    if current_user.role == "admin" || current_user.role == "moderator"
       Project.find(params[:project_id]).update_attributes(:is_active => true )
       respond_to do |format|
         format.html { redirect_to (:back), notice: "#{Project.find(params[:project_id]).name} has been moved to active projects." }
@@ -92,7 +92,7 @@ class ProjectsController < ApplicationController
   end
   
   def makeInactive
-    if current_user.role == "admin" || current_user.role == "administrator"
+    if current_user.role == "admin" || current_user.role == "moderator"
       Project.find(params[:project_id]).update_attributes(:is_active => false )
       respond_to do |format|
         format.html { redirect_to (:back), notice: "#{Project.find(params[:project_id]).name} has been moved to inactive projects." }

@@ -77,7 +77,7 @@ class EmployeeController < ApplicationController
   
   def makeUserActive
     @user = User.find(params[:employee_id])
-    if current_user.role == "admin" || current_user.role == "administrator"
+    if current_user.role == "admin" || current_user.role == "moderator"
       User.find(params[:employee_id]).update_attributes(:is_active => true )
       respond_to do |format|
         format.html { redirect_to (:back), notice: "#{@user.full_name}has been moved to active users." }
@@ -88,7 +88,7 @@ class EmployeeController < ApplicationController
   
   def makeUserInactive
     @user = User.find(params[:employee_id])
-    if current_user.role == "admin" || current_user.role == "administrator"
+    if current_user.role == "admin" || current_user.role == "moderator"
       User.find(params[:employee_id]).update_attributes(:is_active => false )
       respond_to do |format|
         format.html { redirect_to (:back), notice: "#{@user.full_name} has been moved to inactive users." }
