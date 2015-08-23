@@ -1,28 +1,25 @@
-== README
+MBO Graduation assignment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This assignment is made in a period of about 3 weeks. This was my first time working with Ruby on Rails. The reason I chose RoR and not some other programming language I had experience in, is because I wanted to challange myself and see if I could make this project with a language I have never worked with before.
 
-Things you may want to cover:
+This application is used to manage projects and working hours of your employees in your company.
 
-* Ruby version
+With this web-application you can:
+- Manage projects
+- Manage users
+- Manage the working hours per user
+- Manage amount of time spent in a project
 
-* System dependencies
+Project management:
+- Assign users to projects
+- See who participates in which project
+- Howmuch time each person has spend in a project
+- Howmuch total time is spend in a project
 
-* Configuration
+User management:
+- Users have different roles (user, moderator, admin)
+- Admin can manage users (CRUD)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Users can:
+- Add amount of time spent on which project (and add notes of what they have accomplished in that amount of time)
+- See howmuch hours a day/month they have made
