@@ -23,3 +23,10 @@ User management:
 Users can:
 - Add amount of time spent on which project (and add notes of what they have accomplished in that amount of time)
 - See howmuch hours a day/month they have made
+
+To use Project-manager be sure to have Ruby installed. Follow the next instruction in your terminal to get up and running:
+1. $ rake db:migrate
+2. $ rake db:seed
+3. $ rails s
+4. In your browser go to: localhost:3000
+5. Follow the instructions on the screen to finish the setup, and your good to go
