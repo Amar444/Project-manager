@@ -29,4 +29,4 @@ To use Project-manager be sure to have Ruby installed. Follow the next instructi
 2. $ rake db:seed
 3. $ rails s
 4. In your browser go to: localhost:3000
-5. Follow the instructions on the screen to finish the setup, and your good to go
+5. Follow the instructions on the screen to finish the setup, and you're good to go
