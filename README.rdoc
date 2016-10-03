@@ -1,4 +1,4 @@
-MBO Graduation assignment
+MBO Graduation assignment in Ruby on Rails
 
 This assignment is made in a period of about 3 weeks. This was my first time working with Ruby on Rails. The reason I chose RoR and not some other programming language I had experience in, is because I wanted to challange myself and see if I could make this project with a language I have never worked with before.
 
